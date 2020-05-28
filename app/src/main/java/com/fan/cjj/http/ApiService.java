@@ -23,5 +23,10 @@ public interface ApiService {
     Observable<BaseBean<LoginInfo>> hhrLogin(@Field("api") String api,
                                              @Field("username") String username,
                                              @Field("password") String password);
-
+    //注册
+    @POST("/interface")
+    @FormUrlEncoded
+    Observable<BaseBean<LoginInfo>> register(@Field("api") String api,
+                                             @Field("username") String username,
+                                             @Field("password") String password);
 }

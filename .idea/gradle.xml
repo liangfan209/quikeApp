@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/base-library" />
             <option value="$PROJECT_DIR$/baseui-library" />
+            <option value="$PROJECT_DIR$/userapp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

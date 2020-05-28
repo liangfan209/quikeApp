@@ -16,6 +16,12 @@ android {
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
         testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
 
@@ -38,7 +44,9 @@ android {
 
 dependencies {
     implementation project(path: ':baseui-library')
-    dependencies {
-        annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    if (!isBuildModule.toBoolean()) {
+        runtimeOnly project(":userapp")
     }
+    annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
 }

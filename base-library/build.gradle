@@ -52,13 +52,9 @@ dependencies {
     api rootProject.ext.dependencies["autosize"]
 
     api rootProject.ext.dependencies["glide"]
-    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+//    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor (rootProject.ext.dependencies["butterknife-compiler"]){
-        exclude module: 'support-annotations'
-    }
-//    api rootProject.ext.dependencies["arouter"]
-//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
+    api rootProject.ext.dependencies["arouter"]
     //rx系列
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["retrofit-converter-gson"]

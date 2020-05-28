@@ -7,8 +7,7 @@ package com.fan.base_library.mvp;
  * 时间：2020/5/28
  * 版权：
  */
-public interface IView<T> {
+public interface IView {
     default void showDialog(){};
     default void dissmissDialog(){};
-    default void updateView(T data){};
 }

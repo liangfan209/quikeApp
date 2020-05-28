@@ -1,4 +1,5 @@
 rootProject.name='My Application'
 include ':app'
-include ':base-library'
+include ':userapp'
 include ':baseui-library'
+include ':base-library'

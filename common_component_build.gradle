@@ -5,7 +5,6 @@ if (isBuildModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -64,7 +63,7 @@ android {
             if (isBuildModule.toBoolean()) {
                 manifest.srcFile 'src/main/debug/AndroidManifest.xml'
             } else {
-                manifest.srcFile 'src/main/release/AndroidManifest.xml'
+                manifest.srcFile 'src/main/AndroidManifest.xml'
             }
         }
     }
@@ -72,21 +71,16 @@ android {
 
 dependencies {
     if (isBuildModule.toBoolean()) {
-        //view
-        annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
-            exclude module: 'support-annotations'
-        }
-        //tools
-        annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
+        annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+//        annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-        //test
         debugImplementation rootProject.ext.dependencies["canary-debug"]
         releaseImplementation rootProject.ext.dependencies["canary-release"]
         testImplementation rootProject.ext.dependencies["canary-release"]
     } else {
         compileOnly rootProject.ext.dependencies["butterknife-compiler"]
-        compileOnly rootProject.ext.dependencies["dagger2-compiler"]
-        compileOnly rootProject.ext.dependencies["arouter-compiler"]
+//        compileOnly rootProject.ext.dependencies["dagger2-compiler"]
+        annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
         compileOnly rootProject.ext.dependencies["canary-debug"]
         compileOnly rootProject.ext.dependencies["canary-release"]
     }

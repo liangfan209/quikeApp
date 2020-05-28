@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fan.userapp" >
+    <application>
+        <activity android:name=".ui.activity.UserActivity"
+            android:label="userapp"
+            android:configChanges="orientation|screenSize"/>
+    </application>
+</manifest>

@@ -1,8 +1,13 @@
 package com.fan.base_library;
 
 import android.app.Application;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fan.base_library.config.BaseApplicationConfig;
+
+import java.util.Set;
 
 /**
  * 文件名：
@@ -18,7 +23,26 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        ARouter.openLog();     // 打印日志
+        ARouter.openDebug();   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+
         baseApplication = this;
+        ARouter.init(this);
+        //反射manafest文件
+        ApplicationInfo applicationInfo = null;
+        try {
+            applicationInfo = getPackageManager().getApplicationInfo(getPackageName(),
+                    PackageManager.GET_META_DATA);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        Set<String> strings = applicationInfo.metaData.keySet();
+        for (String key: strings) {
+            if("test".equals(applicationInfo.metaData.get(key))){
+                baseApplicationConfig = parseClass(key);
+            }
+        }
     }
 
     public <T> T parseClass(String name) {

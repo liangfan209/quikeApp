@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
  * 时间：2020/5/28
  * 版权：
  */
-public abstract class BaseUiAcitivty<T> extends BaseActivity implements IView<T> {
+public abstract class BaseUiAcitivty extends BaseActivity implements IView {
 
     private LoadingDialog mLoadingDialog;
     @Override
