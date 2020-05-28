@@ -1,14 +1,37 @@
 package com.fan.cjj;
 
-import android.os.Bundle;
+import com.fan.baseuilibrary.ui.BaseUiAcitivty;
+import com.fan.cjj.bean.UserInfo;
+import com.fan.cjj.mine.mvp.p.LoginPresenter;
+import com.fan.cjj.mine.mvp.v.MoreInter;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class MainActivity extends BaseUiAcitivty<UserInfo> implements MoreInter<UserInfo> {
 
-public class MainActivity extends AppCompatActivity {
+    private LoginPresenter mLoginPresenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getContentViewLayout() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void attach() {
+        mLoginPresenter = new LoginPresenter(this);
+        mLoginPresenter.login("partner.account.login","18942923127","123456");
+    }
+
+    @Override
+    public void updateView(UserInfo data) {
+
+    }
+
+    @Override
+    public void getfun1() {
+
+    }
+
+    @Override
+    public void getFun2() {
+
     }
 }

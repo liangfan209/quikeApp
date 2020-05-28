@@ -37,37 +37,38 @@ android {
 }
 
 dependencies {
-
-    api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api rootProject.ext.dependencies["androidx.appcompat"]
     api rootProject.ext.dependencies["androidx.lifecycle"]
     api rootProject.ext.dependencies["androidx.recyclerview"]
     api rootProject.ext.dependencies["androidx.constraintlayout"]
-    api rootProject.ext.dependencies["androidx.material"]
     api rootProject.ext.dependencies["androidx.cardview"]
 
-
+    api rootProject.ext.dependencies["rxandroid2"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["loading-dialog"]
+    api rootProject.ext.dependencies["x-dialog"]
     api rootProject.ext.dependencies["eventbus"]
-    api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["autosize"]
+
+    api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["butterknife"]
-    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
-    api rootProject.ext.dependencies["arouter"]
-    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
-
+    annotationProcessor (rootProject.ext.dependencies["butterknife-compiler"]){
+        exclude module: 'support-annotations'
+    }
+//    api rootProject.ext.dependencies["arouter"]
+//    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     //rx系列
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["retrofit-converter-gson"]
     api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
     api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["okhttp-urlconnection"]
-
+    api rootProject.ext.dependencies["okhttp-logging"]
     //test
     api rootProject.ext.dependencies["junit"]
     api rootProject.ext.dependencies["androidJUnitRunner"]
     api rootProject.ext.dependencies["espresso"]
-
-
-
+    implementation files('libs/BASE64Encoder.jar')
 }
