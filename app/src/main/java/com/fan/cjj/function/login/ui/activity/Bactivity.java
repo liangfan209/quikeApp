@@ -1,4 +1,4 @@
-package com.fan.cjj.login.ui.activity;
+package com.fan.cjj.function.login.ui.activity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;

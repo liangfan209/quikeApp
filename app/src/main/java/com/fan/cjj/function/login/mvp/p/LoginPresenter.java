@@ -1,10 +1,10 @@
-package com.fan.cjj.login.mvp.p;
+package com.fan.cjj.function.login.mvp.p;
 
 import com.fan.base_library.http.BaseBean;
 import com.fan.base_library.http.BaseSubscriber;
 import com.fan.base_library.mvp.BaseModel;
 import com.fan.cjj.bean.LoginInfo;
-import com.fan.cjj.login.mvp.v.LoginIView;
+import com.fan.cjj.function.login.mvp.v.LoginIView;
 import com.fan.cjj.utils.ApiServiceUtils;
 
 /**

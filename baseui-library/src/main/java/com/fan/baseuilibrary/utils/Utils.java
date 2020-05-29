@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.bumptech.glide.request.RequestOptions;
+import com.fan.base_library.BaseApplication;
 import com.fan.baseuilibrary.R;
 import com.hjq.xtoast.XToast;
 
@@ -386,6 +387,10 @@ public class Utils {
 
     public static int dp2px(Context context, final float dpValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (dpValue * scale + 0.5f);
+    }
+    public static int dp2px(final float dpValue) {
+        final float scale = BaseApplication.baseApplication.getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 

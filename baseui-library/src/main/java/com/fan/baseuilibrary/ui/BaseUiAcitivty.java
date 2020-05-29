@@ -8,6 +8,7 @@ import com.fan.baseuilibrary.view.dialog.LoadingDialog;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
+import butterknife.ButterKnife;
 
 /**
  * 文件名：
@@ -24,6 +25,7 @@ public abstract class BaseUiAcitivty extends BaseActivity implements IView {
         super.onCreate(savedInstanceState);
         setContentView(getContentViewLayout());
         mLoadingDialog = new LoadingDialog(this);
+        ButterKnife.bind(this);
         attach();
     }
 

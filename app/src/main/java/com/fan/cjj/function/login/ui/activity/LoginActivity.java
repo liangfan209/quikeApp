@@ -1,18 +1,18 @@
-package com.fan.cjj.login.ui.activity;
+package com.fan.cjj.function.login.ui.activity;
 
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;
-import com.fan.baseuilibrary.utils.AccountValidatorUtil;
 import com.fan.baseuilibrary.utils.EditFormatUtils;
 import com.fan.baseuilibrary.utils.Utils;
 import com.fan.baseuilibrary.view.DeletableEditText;
 import com.fan.cjj.R;
 import com.fan.cjj.bean.LoginInfo;
-import com.fan.cjj.login.mvp.p.LoginPresenter;
-import com.fan.cjj.login.mvp.v.LoginIView;
+import com.fan.cjj.function.login.mvp.p.LoginPresenter;
+import com.fan.cjj.function.login.mvp.v.LoginIView;
+import com.fan.cjj.test.TestObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,10 +61,10 @@ public class LoginActivity extends BaseUiAcitivty implements LoginIView {
 
     private void login() {
         String phoneNumber = mEtPhone.getText().toString().replaceAll(" ", "").trim();
-        if (!AccountValidatorUtil.isMobile(phoneNumber)) {
-            Utils.showToast(this, "请输入正确的手机号码");
-            return;
-        }
+//        if (!AccountValidatorUtil.isMobile(phoneNumber)) {
+//            Utils.showToast(this, "请输入正确的手机号码");
+//            return;
+//        }
         String pwd = mEtPwd.getText().toString().trim();
         pwd = Utils.md5(pwd);
         mLoginPresenter.login("partner.account.login", phoneNumber, pwd);
@@ -73,6 +73,7 @@ public class LoginActivity extends BaseUiAcitivty implements LoginIView {
     @Override
     public void loginView(LoginInfo info) {
         Utils.showToastOk(this, "登陆成功");
-        ARouter.getInstance().build("/userapp/UserActivity").navigation();
+        ARouter.getInstance().build("/app1/activity")
+              .withSerializable("yoyo",new TestObject("xiu...")).navigation();
     }
 }

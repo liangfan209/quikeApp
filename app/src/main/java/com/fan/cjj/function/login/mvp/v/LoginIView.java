@@ -1,4 +1,4 @@
-package com.fan.cjj.login.mvp.v;
+package com.fan.cjj.function.login.mvp.v;
 
 import com.fan.base_library.mvp.IView;
 import com.fan.cjj.bean.LoginInfo;

@@ -1,4 +1,4 @@
-package com.fan.cjj.login.mvp.p;
+package com.fan.cjj.function.login.mvp.p;
 
 import com.fan.base_library.mvp.BaseModel;
 import com.fan.base_library.mvp.IView;

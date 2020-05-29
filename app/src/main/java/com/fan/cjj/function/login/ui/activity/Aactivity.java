@@ -1,8 +1,11 @@
-package com.fan.cjj.login.ui.activity;
+package com.fan.cjj.function.login.ui.activity;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;
 import com.fan.cjj.R;
+import com.fan.cjj.test.TestObject;
 
 /**
  * 文件名：
@@ -13,6 +16,11 @@ import com.fan.cjj.R;
  */
 @Route(path = "/app1/activity")
 public class Aactivity extends BaseUiAcitivty {
+
+    @Autowired(name = "yoyo")
+    TestObject str;
+
+
     @Override
     protected int getContentViewLayout() {
         return R.layout.activity_a;
@@ -20,6 +28,6 @@ public class Aactivity extends BaseUiAcitivty {
 
     @Override
     protected void attach() {
-
+        ARouter.getInstance().inject(this);
     }
 }
