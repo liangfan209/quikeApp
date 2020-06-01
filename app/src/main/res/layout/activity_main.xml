@@ -14,10 +14,12 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_alignParentTop="true"
-        app:tabIndicatorFullWidth="false"
         app:tabIndicatorHeight="10dp"
+        app:tabRippleColor="@color/transparent"
         app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="#999999"
         />
 </RelativeLayout>

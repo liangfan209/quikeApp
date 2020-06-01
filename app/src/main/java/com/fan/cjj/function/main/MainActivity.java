@@ -1,9 +1,12 @@
 package com.fan.cjj.function.main;
 
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;
+import com.fan.baseuilibrary.utils.Utils;
 import com.fan.cjj.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -38,15 +41,25 @@ public class MainActivity extends BaseUiAcitivty {
     protected void attach() {
         List<String> strings = Arrays.asList(tabs);
         for (String str: strings) {
-//            TabLayout.Tab tab = mTablayout.newTab();
-//            View cView = LayoutInflater.from(this).inflate(R.layout.main_tab_view, null);
-//            cView.setLayoutParams(new LinearLayout.LayoutParams(Utils.dp2px(120), FrameLayout.LayoutParams.MATCH_PARENT));
-//            TextView tv = cView.findViewById(R.id.tv_tab);
-//            tv.setText(str);
-//            tab.setCustomView(cView);
-//            mTablayout.addTab(tab);
-
-            mTablayout.addTab(mTablayout.newTab().setText(str));
+            mTablayout.addTab(mTablayout.newTab().setText(str).setIcon(R.mipmap.ic_launcher));
         }
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        LinearLayout mTabStrip = (LinearLayout) mTablayout.getChildAt(0);
+        //遍历SlidingTabStrip的所有TabView子view
+        for (int i = 0; i < mTabStrip.getChildCount(); i++) {
+            View tabView = mTabStrip.getChildAt(i);
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)tabView.getLayoutParams();
+            //给TabView设置leftMargin和rightMargin
+            params.leftMargin = Utils.dp2px(this,30);
+            params.rightMargin = Utils.dp2px(this,30);
+            tabView.setLayoutParams(params);
+            //触发绘制
+            tabView.invalidate();
+        }
+
     }
 }

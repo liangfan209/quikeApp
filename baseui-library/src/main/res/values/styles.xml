@@ -16,4 +16,10 @@
         <attr name="emptyView" format="reference" />
         <attr name="contentView" format="reference" />
     </declare-styleable>
+
+    <style name="tab_test">
+        <item  name="android:textSize">20sp</item>
+        <item  name="android:textColor">@color/red</item>
+        <item name="android:drawableLeft">@mipmap/ic_dialog_tip_error</item>
+    </style>
 </resources>
