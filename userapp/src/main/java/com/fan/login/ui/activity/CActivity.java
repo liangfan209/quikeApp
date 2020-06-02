@@ -1,8 +1,8 @@
-package com.fan.userapp.ui.activity;
+package com.fan.login.ui.activity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;
-import com.fan.userapp.R;
+import com.fan.login.R;
 
 /**
  * 文件名：

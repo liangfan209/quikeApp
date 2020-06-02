@@ -22,4 +22,12 @@
         app:tabSelectedTextColor="@color/black"
         app:tabTextColor="#999999"
         />
+
+    <Button
+        android:id="@+id/click"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="click"
+        android:layout_marginTop="50dp"
+        android:gravity="center"/>
 </RelativeLayout>

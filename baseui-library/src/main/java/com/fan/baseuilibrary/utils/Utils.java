@@ -284,6 +284,10 @@ public class Utils {
                 .show();
     }
 
+    public static void showToast(Activity activity, int res){
+        showToast(activity,activity.getResources().getString(res));
+    }
+
     public static void showToast(Activity activity, String txt) {
         new XToast(activity)
                 .setDuration(1500)
@@ -512,4 +516,5 @@ public class Utils {
         ClipData clip = ClipData.newPlainText("simple text", content);
         clipboard.setPrimaryClip(clip);
     }
+
 }

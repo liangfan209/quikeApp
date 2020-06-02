@@ -1,10 +1,13 @@
 package com.fan.cjj.function.main;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.fan.baseuilibrary.configration.AppArouter;
 import com.fan.baseuilibrary.ui.BaseUiAcitivty;
 import com.fan.baseuilibrary.utils.Utils;
 import com.fan.cjj.R;
@@ -14,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 文件名：
@@ -29,8 +33,11 @@ public class MainActivity extends BaseUiAcitivty {
     FrameLayout mFltContent;
     @BindView(R.id.tablayout)
     TabLayout mTablayout;
+    @BindView(R.id.click)
+    Button mClick;
 
-    private String[] tabs = new String[]{"tab1","tab2","tab3"};
+    private String[] tabs = new String[]{"tab1", "tab2", "tab3"};
+    private LoginModelImp mLoginModelImp = new LoginModelImp();
 
     @Override
     protected int getContentViewLayout() {
@@ -40,7 +47,7 @@ public class MainActivity extends BaseUiAcitivty {
     @Override
     protected void attach() {
         List<String> strings = Arrays.asList(tabs);
-        for (String str: strings) {
+        for (String str : strings) {
             mTablayout.addTab(mTablayout.newTab().setText(str).setIcon(R.mipmap.ic_launcher));
         }
     }
@@ -52,14 +59,22 @@ public class MainActivity extends BaseUiAcitivty {
         //遍历SlidingTabStrip的所有TabView子view
         for (int i = 0; i < mTabStrip.getChildCount(); i++) {
             View tabView = mTabStrip.getChildAt(i);
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)tabView.getLayoutParams();
+            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
             //给TabView设置leftMargin和rightMargin
-            params.leftMargin = Utils.dp2px(this,30);
-            params.rightMargin = Utils.dp2px(this,30);
+            params.leftMargin = Utils.dp2px(this, 30);
+            params.rightMargin = Utils.dp2px(this, 30);
             tabView.setLayoutParams(params);
             //触发绘制
             tabView.invalidate();
         }
 
+    }
+
+
+    @OnClick(R.id.click)
+    public void onViewClicked() {
+        ARouter.getInstance().build(AppArouter.TEMPLTE_LOGIN)
+                .withSerializable(AppArouter.LOGIN_BUNDLE,mLoginModelImp)
+                .navigation();
     }
 }

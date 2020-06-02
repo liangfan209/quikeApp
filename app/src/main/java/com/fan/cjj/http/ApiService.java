@@ -1,7 +1,7 @@
 package com.fan.cjj.http;
 
 import com.fan.base_library.http.BaseBean;
-import com.fan.cjj.bean.LoginInfo;
+import com.fan.login.bean.LoginInfo;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -23,10 +23,18 @@ public interface ApiService {
     Observable<BaseBean<LoginInfo>> hhrLogin(@Field("api") String api,
                                              @Field("username") String username,
                                              @Field("password") String password);
-    //注册
+
+    //忘记密码
     @POST("/interface")
     @FormUrlEncoded
-    Observable<BaseBean<LoginInfo>> register(@Field("api") String api,
-                                             @Field("username") String username,
-                                             @Field("password") String password);
+    Observable<BaseBean> hhrForgetPwd(@Field("api") String api,
+                                                 @Field("newpassword") String username,
+                                                 @Field("phone") String password,
+                                                 @Field("checkCode") String checkCode);
+    //获取手机验证码
+    @POST("/interface")
+    @FormUrlEncoded
+    Observable<BaseBean> hhrGetVertificatCode(@Field("api") String api,
+                                      @Field("type") String type,
+                                      @Field("phone") String phone);
 }

@@ -73,7 +73,7 @@ public class LoginActivity extends BaseUiAcitivty implements LoginIView {
     @Override
     public void loginView(LoginInfo info) {
         Utils.showToastOk(this, "登陆成功");
-        ARouter.getInstance().build("/app1/activity")
+        ARouter.getInstance().build("/userapp/UserActivity")
               .withSerializable("yoyo",new TestObject("xiu...")).navigation();
     }
 }

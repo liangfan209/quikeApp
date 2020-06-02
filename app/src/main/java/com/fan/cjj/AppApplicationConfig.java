@@ -13,7 +13,7 @@ import com.fan.cjj.http.ApiService;
 public class AppApplicationConfig extends BaseApplicationConfig {
 
     public AppApplicationConfig() {
-        this.baseUrl = "http://192.168.3.213:8769";
+        this.baseUrl = "http://39.108.101.173:8001";
         this.service = ApiService.class;
     }
 }

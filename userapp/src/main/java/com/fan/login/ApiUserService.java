@@ -1,4 +1,4 @@
-package com.fan.userapp;
+package com.fan.login;
 
 import com.fan.base_library.http.BaseBean;
 

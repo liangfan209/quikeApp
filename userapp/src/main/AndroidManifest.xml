@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fan.userapp" >
+    package="com.fan.login" >
     <application>
-        <activity android:name=".ui.activity.UserActivity"
+        <activity android:name="com.fan.login.ui.activity.UserActivity"
             android:label="userapp"
             android:configChanges="orientation|screenSize"/>
     </application>

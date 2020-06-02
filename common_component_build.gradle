@@ -5,6 +5,7 @@ if (isBuildModule.toBoolean()) {
 } else {
     apply plugin: 'com.android.library'
 }
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
@@ -71,7 +72,9 @@ android {
 
 dependencies {
     if (isBuildModule.toBoolean()) {
-        annotationProcessor rootProject.ext.dependencies["butterknife-compiler"]
+        annotationProcessor(rootProject.ext.dependencies["butterknife-compiler"]) {
+            exclude module: 'support-annotations'
+        }
 //        annotationProcessor rootProject.ext.dependencies["dagger2-compiler"]
         annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
         debugImplementation rootProject.ext.dependencies["canary-debug"]
