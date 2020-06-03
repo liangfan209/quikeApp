@@ -38,13 +38,7 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api rootProject.ext.dependencies["rxandroid2"]
-    api rootProject.ext.dependencies["rxjava2"]
-    //rx系列
-    api rootProject.ext.dependencies["retrofit"]
+    implementation 'com.lzy.net:okgo:3.0.4'
     api rootProject.ext.dependencies["retrofit-converter-gson"]
-    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
-    api rootProject.ext.dependencies["okhttp3"]
-    api rootProject.ext.dependencies["okhttp-urlconnection"]
-    api rootProject.ext.dependencies["okhttp-logging"]
+    implementation 'com.readystatesoftware.chuck:library:1.0.4'
 }

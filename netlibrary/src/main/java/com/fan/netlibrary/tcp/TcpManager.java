@@ -1,11 +1,22 @@
 package com.fan.netlibrary.tcp;
 
-/**
- * 文件名：
- * 描述：
- * 作者：梁帆
- * 时间：2020/6/3
- * 版权：
- */
-public class TcpManager {
+import com.fan.netlibrary.NetManager;
+import com.fan.netlibrary.http.JsonCallback;
+
+import java.util.Map;
+
+public class TcpManager extends NetManager {
+
+    public static TcpManager getInstance(){
+        return TcpHodel.mTcpManager;
+    }
+
+    @Override
+    protected <T> void request(Map<String, String> map, JsonCallback<T> callback) {
+
+    }
+
+    private static class TcpHodel{
+       private static TcpManager mTcpManager = new TcpManager();
+   }
 }
