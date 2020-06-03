@@ -1,7 +1,7 @@
-package com.fan.base_library.http.intercepter;
+package com.fan.netlibrary.http.intercepter;
 
 
-import com.fan.base_library.utils.RSA;
+import com.fan.netlibrary.http.RSA;
 
 import java.io.IOException;
 
@@ -21,7 +21,6 @@ import okhttp3.Response;
 public class HttpIntercepter implements Interceptor {
 
 
-
     @Override
     public Response intercept(Chain chain) throws IOException {
 
@@ -33,7 +32,7 @@ public class HttpIntercepter implements Interceptor {
                 StringBuilder sb = new StringBuilder();
                 // 先复制原来的参数
                 for (int i = 0; i < formBody.size(); i++) {
-                    if(!formBody.encodedName(i).equals("file")){
+                    if (!formBody.encodedName(i).equals("file")) {
                         sb.append(formBody.encodedName(i)).append("=").append(formBody.encodedValue(i));
                         if (i != formBody.size() - 1) {
                             sb.append("&");
@@ -43,12 +42,13 @@ public class HttpIntercepter implements Interceptor {
                 }
                 //继续拼接参数
                 String time = String.valueOf(System.currentTimeMillis());
-                String bufferStr = sb.toString() + "&platform=0&clientType=1&flag=customer&version=1&signtype=sha&protype=cs&timestamp=" + time ;
+                String bufferStr = sb.toString() + "&platform=0&clientType=1&flag=customer&version=1&signtype=sha&protype=cs" +
+                        "&timestamp=" + time;
                 String unSign = RSA.getSign(bufferStr);
                 System.out.println("没有加密之前字符串 unsign = " + unSign);
                 //加签
-                    String s1 = RSA.sha1(unSign);
-                    String sign = RSA.sampling(s1, RSA.requestBodyStr2Map(bufferStr), 1.4);
+                String s1 = RSA.sha1(unSign);
+                String sign = RSA.sampling(s1, RSA.requestBodyStr2Map(bufferStr), 1.4);
                 System.out.println("加密后 sign = " + sign);
                 // 添加公共参数
                 FormBody.Builder builder = bodyBuilder
@@ -57,8 +57,8 @@ public class HttpIntercepter implements Interceptor {
                         .addEncoded("flag", "customer")
                         .addEncoded("version", "1")
                         .addEncoded("signType", "sha")
-                        .addEncoded("clientType","1")
-                        .addEncoded("platform","0")
+                        .addEncoded("clientType", "1")
+                        .addEncoded("platform", "0")
                         .addEncoded("timestamp", time);
 
                 formBody = builder
@@ -70,8 +70,6 @@ public class HttpIntercepter implements Interceptor {
         Response result = chain.proceed(request);
         return result;
     }
-
-
 
 
 }

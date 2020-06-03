@@ -1,6 +1,5 @@
-package com.fan.base_library.http;
+package com.fan.netlibrary.http;
 
-import com.fan.base_library.mvp.IView;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -11,7 +10,6 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class BaseSubscriber<T extends BaseBean> implements Observer<T> {
 
-    private IView mIView;
 
     /**
      * 默认不带dialog
@@ -19,14 +17,6 @@ public abstract class BaseSubscriber<T extends BaseBean> implements Observer<T> 
     public BaseSubscriber() {
     }
 
-    /**
-     * 自带dialog
-     * @param iView
-     */
-    public BaseSubscriber(IView iView) {
-        this.mIView = iView;
-        mIView.showDialog();
-    }
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -34,9 +24,6 @@ public abstract class BaseSubscriber<T extends BaseBean> implements Observer<T> 
 
     @Override
     public void onComplete() {
-        if(mIView != null){
-            mIView.dissmissDialog();
-        }
     }
 
     @Override
