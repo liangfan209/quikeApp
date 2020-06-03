@@ -1,7 +1,7 @@
-package com.fan.base_library.http;
+package com.fan.netlibrary.http;
 
-import com.fan.base_library.BaseApplication;
-import com.fan.base_library.http.intercepter.HttpIntercepter;
+
+import com.fan.netlibrary.http.intercepter.HttpIntercepter;
 
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
@@ -29,9 +29,7 @@ public class HttpManager {
     private Retrofit retrofit;
     private OkHttpClient okHttpClient;
     private Object api;
-
     private static HttpManager mInstance;
-
     public static HttpManager getInstance(){
         if(mInstance == null){
             synchronized (HttpManager.class){
